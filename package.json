@@ -1,0 +1,24 @@
+{
+  "name": "olx-generator",
+  "version": "0.0.1",
+  "description": "Generate OpenEDX OLX structure from html pages.",
+  "main": "generator.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/cherryApp/olx-generator.git"
+  },
+  "author": "Joe Cserko",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/cherryApp/olx-generator/issues"
+  },
+  "homepage": "https://github.com/cherryApp/olx-generator#readme",
+  "dependencies": {
+    "argparse": "^1.0.10",
+    "cheerio": "^1.0.0-rc.2",
+    "got": "^9.1.0"
+  }
+}
