@@ -19,6 +19,7 @@
   "dependencies": {
     "argparse": "^1.0.10",
     "cheerio": "^1.0.0-rc.2",
-    "got": "^9.1.0"
+    "got": "^9.1.0",
+    "xmlbuilder": "^10.0.0"
   }
 }
