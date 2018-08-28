@@ -1,17 +1,27 @@
 const cheerio = require('cheerio'),
     builder = require('xmlbuilder'),
     path = require('path'),
-    util = require('../module/util');
+    hash = require('object-hash'),
+    got = require('got'),
+    util = require('../module/util'),
+    HTML = require('../module/content/html');
 
 module.exports = class Generator {
-    constructor(courseData, courseDirectory) {
-        /*
-        this.siteData = siteData;
-        this.$ = cheerio.load(this.siteData);
-        */
+    constructor(courseData, courseDirectory, args) {
         this.courseData = courseData;
         this.courseDirectory = courseDirectory;
-        this.basicCoruseData = ['url_name', 'org', 'course'];
+        this.args = args;
+        this.basicCourseData = ['url_name', 'org', 'course'];
+
+        // Course items.
+        this.videos = {};
+        this.htmls = {};
+        this.problems = {};
+        this.discussions = {};
+        this.verticals = {};
+        this.sequentials = {};
+        this.chapters = {};
+
         this.init();
     }
 
@@ -40,15 +50,18 @@ module.exports = class Generator {
         dirs.push( util.mkdirPromise(this.courseDirectory, 'course/video') );
 
         Promise.all(this.courseDirectory).then(
-            () => this.createCourse()
+            () => {
+                this.createCourse();
+                this.createContent();
+            }
         ).catch( 
             err => console.error(err) 
         );
         
     }
 
+    // Crate base xml.
     createCourse() {
-        // let title = this.$('title').text();
         let xml = builder.create('course');
         let filePath = path.join(
             this.courseDirectory, 
@@ -56,7 +69,7 @@ module.exports = class Generator {
         );
 
         for (let k in this.courseData) {
-            if (this.basicCoruseData.indexOf(k) > -1) {
+            if (this.basicCourseData.indexOf(k) > -1) {
                 xml.att(k, this.courseData[k]);
             }
         }
@@ -64,13 +77,14 @@ module.exports = class Generator {
 
         util.writeFilePromise(filePath, xml.toString())
             .then( () => {
-                this.crateCourseMeta();
+                console.log('Ok: course.xml');
             }).catch( err => {
                 console.error(err);
             });
     }
 
-    crateCourseMeta() {
+    // Create detailed description xml.
+    createCourseXML() {
         // let title = this.$('title').text();
         let xml = builder.create('course');
         let filePath = path.join(
@@ -79,7 +93,7 @@ module.exports = class Generator {
         );
 
         for (let k in this.courseData) {
-            if (this.basicCoruseData.indexOf(k) < 0) {
+            if (this.basicCourseData.indexOf(k) < 0) {
                 xml.att(k, this.courseData[k]);
             }
         }
@@ -95,5 +109,54 @@ module.exports = class Generator {
             }).catch( err => {
                 console.error(err);
             });
+    }
+
+    // Create content of course.
+    createContent() {
+        let requests = [],
+            htmlDir = path.join(this.courseDirectory, 'course/html');
+        
+        let client = got.extend({
+            baseUrl: this.args.urls[0],
+            headers: this.args.header,
+            encoding: 'utf8'
+        });
+        
+        client.get('/')
+            .then(
+                data => {
+                    let html = new HTML(data.url, '', data.body);
+                    html.writeFiles(htmlDir);
+                }
+            )
+            .catch( 
+                err => console.error( err )
+            );
+
+        /*
+        for (let k in this.args.urls) {
+            let client = got.extend({
+                baseUrl: this.args.urls[k],
+                headers: this.args.header,
+                encoding: 'utf8'
+            });
+            requests.push( client.get('/') );
+        }
+
+
+
+        Promise.all(requests)
+            .then( 
+                values => {
+                    for (let k in values) {
+                        let html = new HTML(values[k].url, '', values[k].body);
+                        html.writeFiles(htmlDir);
+                    }
+                }
+            )
+            .catch( 
+                err => console.error(err) 
+            );
+        */
     }
 };
