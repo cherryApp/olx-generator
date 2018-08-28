@@ -21,9 +21,9 @@ module.exports = class Util {
     }
 
     // Primisify fs.writeFile.
-    static writeFilePromise(filePath, fileData) {
+    static writeFilePromise(filePath, fileData, opts = 'utf8') {
         return new Promise( (resolve, reject) => {
-            fs.writeFile(filePath, fileData, 'utf8', (err) => {
+            fs.writeFile(filePath, fileData, opts, (err) => {
                 if (err) {
                     return reject(err);
                 }

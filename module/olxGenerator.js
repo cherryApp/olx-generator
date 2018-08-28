@@ -52,7 +52,8 @@ module.exports = class Generator {
         Promise.all(this.courseDirectory).then(
             () => {
                 this.createCourse();
-                this.createContent();
+                this.testContent();
+                // this.createContent();
             }
         ).catch( 
             err => console.error(err) 
@@ -111,29 +112,34 @@ module.exports = class Generator {
             });
     }
 
-    // Create content of course.
-    createContent() {
+    // Test function for the content.
+    testContent() {
         let requests = [],
-            htmlDir = path.join(this.courseDirectory, 'course/html');
+            htmlDir = path.join(this.courseDirectory);
         
         let client = got.extend({
-            baseUrl: this.args.urls[0],
+            baseUrl: this.args.urls[3],
             headers: this.args.header,
             encoding: 'utf8'
         });
-        
+
         client.get('/')
             .then(
                 data => {
-                    let html = new HTML(data.url, '', data.body);
-                    html.writeFiles(htmlDir);
+                    let html = new HTML(data.url, '', data.body, htmlDir);
                 }
             )
             .catch( 
                 err => console.error( err )
             );
+    }
 
-        /*
+    // Create content of course.
+    createContent() {
+
+        let requests = [],
+            htmlDir = path.join(this.courseDirectory);
+        
         for (let k in this.args.urls) {
             let client = got.extend({
                 baseUrl: this.args.urls[k],
@@ -143,20 +149,16 @@ module.exports = class Generator {
             requests.push( client.get('/') );
         }
 
-
-
         Promise.all(requests)
             .then( 
                 values => {
                     for (let k in values) {
-                        let html = new HTML(values[k].url, '', values[k].body);
-                        html.writeFiles(htmlDir);
+                        let html = new HTML(values[k].url, '', values[k].body, htmlDir);
                     }
                 }
             )
             .catch( 
                 err => console.error(err) 
             );
-        */
     }
 };

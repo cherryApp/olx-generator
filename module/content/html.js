@@ -1,19 +1,22 @@
 // HTML content.
 const Content = require('./content'),
       Video = require('./video'),
+      Static = require('./static'),
       util = require('../util'),
       cheerio = require('cheerio'),
       builder = require('xmlbuilder'),
       path = require('path');
 
 module.exports = class HTML extends Content {
-    constructor(url, display_name, data) {
-        super(url, display_name, data);
+    constructor(url, display_name, data, baseDir) {
+        super(url, display_name, data, baseDir);
 
         this.$ = null;
         this.body = null;
         this.xml = null;
         this.videos = [];
+        this.assets = [];
+        this.statics = [];
         
         this.processData();
     }
@@ -32,17 +35,19 @@ module.exports = class HTML extends Content {
         xml.end({pretty: true});
         this.xml = xml.toString();
 
-        this.getVideos();
+        this.writeFiles();
+
+        this.getVideosAndAssets();
     }
 
-    writeFiles(baseDir) {
+    writeFiles() {
         Promise.all([
             util.writeFilePromise(
-                path.join(baseDir, this.filename+'.xml'),
+                path.join(this.baseDir, 'course/html', this.filename+'.xml'),
                 this.xml
             ),
             util.writeFilePromise(
-                path.join(baseDir, this.filename+'.html'),
+                path.join(this.baseDir, 'course/html', this.filename+'.html'),
                 this.body
             )
         ])
@@ -54,10 +59,19 @@ module.exports = class HTML extends Content {
         );
     }
 
-    getVideos() {
-        let videoList = this.$('video');
-        for (let k in videoList) {
-            this.videos.push( new Video('', '', videoList[k]) );
-        }
+    getVideosAndAssets() {
+        // Save videos.
+        this.$('video').each( (ind, elem) => {
+            this.videos.push( 
+                new Video(this.url, '', [elem, this.$(elem)], this.baseDir) 
+            );
+        });
+
+        // Save assets.
+        this.$('img').each( (ind, elem) => {
+            this.statics.push( 
+                new Static(this.url, '', [elem, this.$(elem)], this.baseDir) 
+            );
+        });
     }
 }

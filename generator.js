@@ -129,21 +129,3 @@ let courseData = {
 };
 let courseDirectory = path.join(__dirname, 'olx/test1');
 const course = new OlxGenerator(courseData, courseDirectory, args);
-/*
-// Get content from the url.
-const client = got.extend({
-    baseUrl: args.url,
-    headers: args.header,
-    encoding: 'utf8'
-});
-client.get('/').then(
-    data => processContent(data),
-    err => console.error(err)
-);
-
-// Process content.
-const processContent = data => {
-    let body = data.body;
-    let gen = new OlxGenerator(body);
-};
-*/
