@@ -15,11 +15,17 @@ if (!args.url) {
 
 // Init course.
 let courseData = {
-    "url_name": "course",
-    "org": "edX",
-    "course": "DemoX"    
+    url_name: "training360-basic-course",
+    org: "Training360",
+    course: "Bevezetés a programozásba",
+    advanced_modules: "[&quot;annotatable&quot;, &quot;videoalpha&quot;, &quot;openassessment&quot;]", 
+    cert_html_view_enabled: "true",
+    display_name: "Programozási alapismeretek", 
+    language: "hu",
+    start: "&quot;2018-09-01T00:00:00+00:00&quot;"
 };
-const course = new OlxGenerator(courseData);
+let courseDirectory = path.join(__dirname, 'olx/test1');
+const course = new OlxGenerator(courseData, courseDirectory);
 /*
 // Get content from the url.
 const client = got.extend({
