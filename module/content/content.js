@@ -10,5 +10,6 @@ module.exports = class Content {
         this.filename = hash(this.url);
         this.hdata = hash(this.data);
         this.url_name = this.hdata;
+        this.xml = '';
     }
 }

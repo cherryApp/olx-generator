@@ -14,7 +14,7 @@ module.exports = class HTML extends Content {
         this.$ = null;
         this.body = null;
         this.xml = null;
-        this.videos = [];
+        this.videos = {};
         this.assets = [];
         this.statics = [];
         
@@ -24,20 +24,20 @@ module.exports = class HTML extends Content {
     processData() {
         this.$ = cheerio.load(this.data);
         this.display_name = this.$('title').text();
+        this.getVideosAndAssets();        
+        
         let body = cheerio.load( this.$('body > .container').html() );
         this.body = body.html({decodeEntities: false})  
-                        .replace(/<html>|<\/html>|<body>|<\/body>|<head>|<\/head>/g, '');
-
+        .replace(/<html>|<\/html>|<body>|<\/body>|<head>|<\/head>/g, '');
+        
         // <html filename="0a3b4139f51a4917a3aff9d519b1eeb6" display_name="Videos on edX"/>
         let xml = builder.create('html');
         xml.att('filename', this.filename);
         xml.att('display_name', this.display_name);
         xml.end({pretty: true});
         this.xml = xml.toString();
-
+        
         this.writeFiles();
-
-        this.getVideosAndAssets();
     }
 
     writeFiles() {
@@ -62,9 +62,10 @@ module.exports = class HTML extends Content {
     getVideosAndAssets() {
         // Save videos.
         this.$('video').each( (ind, elem) => {
-            this.videos.push( 
-                new Video(this.url, '', [elem, this.$(elem)], this.baseDir) 
-            );
+            let video = new Video(
+                this.url, '', [elem, this.$(elem)], this.baseDir
+            ) ;
+            this.videos[video.filename] = video;
         });
 
         // Save assets.
@@ -73,5 +74,8 @@ module.exports = class HTML extends Content {
                 new Static(this.url, '', [elem, this.$(elem)], this.baseDir) 
             );
         });
+
+        // Remove videos.
+        this.$('body > .container').find('video').remove();
     }
 }

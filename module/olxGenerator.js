@@ -1,10 +1,9 @@
 const cheerio = require('cheerio'),
     builder = require('xmlbuilder'),
     path = require('path'),
-    hash = require('object-hash'),
     got = require('got'),
     util = require('../module/util'),
-    HTML = require('../module/content/html');
+    Vertical = require('../module/content/vertical');
 
 module.exports = class Generator {
     constructor(courseData, courseDirectory, args) {
@@ -14,10 +13,6 @@ module.exports = class Generator {
         this.basicCourseData = ['url_name', 'org', 'course'];
 
         // Course items.
-        this.videos = {};
-        this.htmls = {};
-        this.problems = {};
-        this.discussions = {};
         this.verticals = {};
         this.sequentials = {};
         this.chapters = {};
@@ -118,7 +113,8 @@ module.exports = class Generator {
             htmlDir = path.join(this.courseDirectory);
         
         let client = got.extend({
-            baseUrl: this.args.urls[3],
+            // baseUrl: this.args.urls[3],
+            baseUrl: 'http://localhost:3333/lesson/basic/week2/01_variable_basics',
             headers: this.args.header,
             encoding: 'utf8'
         });
@@ -126,7 +122,9 @@ module.exports = class Generator {
         client.get('/')
             .then(
                 data => {
-                    let html = new HTML(data.url, '', data.body, htmlDir);
+                    let vert = new Vertical(data.url, '', data.body, htmlDir);
+                    this.verticals[vert.filename] = vert;
+                    console.log( this.verticals );
                 }
             )
             .catch( 
