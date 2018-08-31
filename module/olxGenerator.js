@@ -3,7 +3,7 @@ const cheerio = require('cheerio'),
     path = require('path'),
     got = require('got'),
     util = require('../module/util'),
-    Sequential = require('../module/content/sequential');
+    Chapter = require('../module/content/chapter');
 
 module.exports = class Generator {
     constructor(courseData, courseDirectory, args) {
@@ -13,7 +13,6 @@ module.exports = class Generator {
         this.basicCourseData = ['url_name', 'org', 'course'];
 
         // Course items.
-        this.sequentials = {};
         this.chapters = {};
 
         this.init();
@@ -46,7 +45,8 @@ module.exports = class Generator {
         Promise.all(this.courseDirectory).then(
             () => {
                 this.createCourse();
-                this.testContent();
+                this.createChapters();
+                // this.testContent();
                 // this.createContent();
             }
         ).catch( 
@@ -94,7 +94,12 @@ module.exports = class Generator {
         }
 
         // <chapter url_name="94655354a6ec4155b5bf048447a2963e"/>
-        xml.ele('chapter').att('url_name', 'fejezet').up();
+        for (let k in this.chapters) {
+            xml.ele('chapter')
+                .att('url_name', this.chapters[k].filename)
+                .att('display_name', this.chapters[k].chapterData.display_name)
+                .up();
+        }
 
         xml.end({pretty: true});
 
@@ -106,55 +111,18 @@ module.exports = class Generator {
             });
     }
 
-    // Test function for the content.
-    testContent() {
-        let requests = [],
-            htmlDir = path.join(this.courseDirectory);
-        
-        let client = got.extend({
-            baseUrl: this.args.urls[5],
-            headers: this.args.header,
-            encoding: 'utf8'
-        });
-
-        client.get('/')
-            .then(
-                data => {
-                    let seq = new Sequential(data.url, '', data.body, htmlDir);
-                    this.sequentials[seq.filename] = seq;
-                    console.log( this.sequentials );
-                }
-            )
-            .catch( 
-                err => console.error( err )
+    // Create chapters.
+    createChapters() {
+        for (let k in this.courseData.chapters) {
+            let chapter = new Chapter(
+                this.courseData.chapters[k], 
+                this.courseDirectory, 
+                this.args
             );
-    }
-
-    // Create content of course.
-    createContent() {
-
-        let requests = [],
-            htmlDir = path.join(this.courseDirectory);
-        
-        for (let k in this.args.urls) {
-            let client = got.extend({
-                baseUrl: this.args.urls[k],
-                headers: this.args.header,
-                encoding: 'utf8'
-            });
-            requests.push( client.get('/') );
+            this.chapters[chapter.filename] = chapter;
         }
 
-        Promise.all(requests)
-            .then( 
-                values => {
-                    for (let k in values) {
-                        let html = new HTML(values[k].url, '', values[k].body, htmlDir);
-                    }
-                }
-            )
-            .catch( 
-                err => console.error(err) 
-            );
+        // Create detailed course xml file.
+        this.createCourseXML();
     }
 };

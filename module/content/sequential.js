@@ -1,6 +1,5 @@
 // Vertical structure for arrange elements.
 const Content = require('./content'),
-      HTML = require('./html'),
       hash = require('object-hash'),
       path = require('path'),
       builder = require('xmlbuilder'), 
