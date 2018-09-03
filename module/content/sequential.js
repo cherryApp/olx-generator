@@ -12,7 +12,7 @@ module.exports = class Sequential extends Content {
 
         // Init children.
         this.verticals = {};
-
+        
         this.createVertical();
         this.createXML();
     }
@@ -21,6 +21,7 @@ module.exports = class Sequential extends Content {
         let vert = new Vertical(this.url, '', this.data, this.baseDir);
         this.display_name = vert.display_name;
         this.verticals[vert.filename] = vert;
+        this.allPromise.push(vert.watcher);
     }
 
     createXML() {
@@ -46,14 +47,26 @@ module.exports = class Sequential extends Content {
             url: this.url,
             vertical: Object.keys(this.verticals)[0]
         });
+
+        Promise.all(this.allPromise).then(
+            values => this.writeFile()
+        ).catch( 
+            err => this.catch(err) 
+        );
         
+    }
+    
+    writeFile() {
         util.writeFilePromise(
             path.join(this.baseDir, 'course/sequential', this.filename+'.xml'),
             this.xml
         ).then(
-            () => console.log(`Sequential ${this.filename} written.`)
+            () => {
+                console.log(`Sequential ${this.filename} written.`);
+                this.done();
+            }
         ).catch(
-            err => console.error(err)
+            err => this.catch(err)
         );
     }
 }

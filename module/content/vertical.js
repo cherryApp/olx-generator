@@ -31,6 +31,7 @@ module.exports = class Vertical extends Content {
         this.display_name = html.display_name;
         this.videos = html.videos;
         this.htmls[html.filename] = html;
+        this.allPromise.push(html.watcher);
     }
 
     createXML() {
@@ -66,9 +67,12 @@ module.exports = class Vertical extends Content {
             path.join(this.baseDir, 'course/vertical', this.filename+'.xml'),
             this.xml
         ).then(
-            () => console.log(`Vertical ${this.filename} written.`)
+            () => {
+                console.log(`Vertical ${this.filename} written.`);
+                this.done();
+            }
         ).catch(
-            err => console.error(err)
+            err => this.catch(err)
         );
     }
 }

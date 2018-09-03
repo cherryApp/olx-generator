@@ -18,6 +18,15 @@ module.exports = class Chapter {
         // Init children.
         this.sequentials = {};
 
+        // Wait for sequentials is done.
+        this.allPromise = [];
+        this.done = null;
+        this.catch = null;
+        this.watcher = new Promise( (resolve, reject) => {
+            this.done = resolve;
+            this.catch = reject;
+        });
+
         this.createSequentials();
     }
     
@@ -28,15 +37,17 @@ module.exports = class Chapter {
         
         for (let k in this.chapterData.urls) {
             let client = got.extend({
-                baseUrl: this.chapterData.urls[k],
+                baseUrl: this.chapterData.urls[k].replace(
+                    'https://yellowroad.training360.com',
+                    'http://localhost:3333'
+                ),
                 headers: this.args.header,
                 encoding: 'utf8'
             });
             requests.push( client.get('/') );
         }
         
-        Promise.all(requests)
-        .then( 
+        Promise.all(requests).then( 
             values => {
                 for (let k in values) {
                     let seq = new Sequential(
@@ -46,13 +57,18 @@ module.exports = class Chapter {
                         htmlDir
                     );
                     this.sequentials[seq.filename] = seq;
+                    this.allPromise.push(seq.watcher);                    
                 }
-                this.createXML();
+                
+                Promise.all(this.allPromise).then(
+                    values => this.createXML()
+                ).catch( err => this.catch(err) );
             }
         )
         .catch( 
                 err => console.error(err) 
             );
+
     }
 
     createXML() {
@@ -79,9 +95,12 @@ module.exports = class Chapter {
             path.join(this.courseDirectory, 'course/chapter', this.filename+'.xml'),
             this.xml
         ).then(
-            () => console.log(`Chapter ${this.filename} written.`)
+            () => {
+                console.log(`Chapter ${this.filename} written.`);
+                this.done();
+            }
         ).catch(
-            err => console.error(err)
+            err => this.catch(err)
         );
     }
 }

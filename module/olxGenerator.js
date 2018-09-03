@@ -1,8 +1,8 @@
-const cheerio = require('cheerio'),
-    builder = require('xmlbuilder'),
+const builder = require('xmlbuilder'),
     path = require('path'),
     got = require('got'),
     util = require('../module/util'),
+    targz = require('targz'),
     Chapter = require('../module/content/chapter');
 
 module.exports = class Generator {
@@ -105,7 +105,21 @@ module.exports = class Generator {
 
         util.writeFilePromise(filePath, xml.toString())
             .then( () => {
-                console.log('ok');
+                console.log('Last file is written.');
+                console.log('Dir: ', this.courseDirectory);
+                targz.compress({
+                    src: path.join(this.courseDirectory, '/'),
+                    dest: path.join(this.courseDirectory, '../tr3600012.tar.gz'),
+                    tar: {
+                        ignore: function(name) {
+                            console.log('Name: ', name);
+                            return name === '.' // ignore . files when packing
+                        }
+                    },
+                }, (err) => {
+                    if (err) return console.error(err);
+                    console.log('TAR saved.');
+                });
             }).catch( err => {
                 console.error(err);
             });
@@ -113,6 +127,7 @@ module.exports = class Generator {
 
     // Create chapters.
     createChapters() {
+        let waitForChapters = [];
         for (let k in this.courseData.chapters) {
             let chapter = new Chapter(
                 this.courseData.chapters[k], 
@@ -120,9 +135,12 @@ module.exports = class Generator {
                 this.args
             );
             this.chapters[chapter.filename] = chapter;
+            waitForChapters.push(chapter.watcher);
         }
 
         // Create detailed course xml file.
-        this.createCourseXML();
+        Promise.all(waitForChapters).then(
+            values => this.createCourseXML()
+        ).catch( err => console.error(err) );
     }
 };

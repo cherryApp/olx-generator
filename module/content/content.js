@@ -11,5 +11,14 @@ module.exports = class Content {
         this.hdata = hash(this.data);
         this.url_name = this.hdata;
         this.xml = '';
+
+        // Wait for sequentials is done.
+        this.allPromise = [];
+        this.done = null;
+        this.catch = null;
+        this.watcher = new Promise( (resolve, reject) => {
+            this.done = resolve;
+            this.catch = reject;
+        });
     }
 }

@@ -28,9 +28,11 @@ module.exports = class Static extends Content {
 
         download(staticURL, downloadOptions, (err) => {
             if (err) {
+                this.catch(err);
                 return console.error( err );
             }
             console.log(`File ${fileName} saved.`);
+            this.done();
         });
     }
 }

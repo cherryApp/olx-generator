@@ -52,5 +52,5 @@ courseData.chapters = [
     }
 ];
 
-let courseDirectory = path.join(__dirname, 'olx/test1');
+let courseDirectory = path.join(__dirname, 'olx/tr3600012');
 const course = new OlxGenerator(courseData, courseDirectory, args);

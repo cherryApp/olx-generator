@@ -37,7 +37,9 @@ module.exports = class HTML extends Content {
         xml.end({pretty: true});
         this.xml = xml.toString();
         
-        this.writeFiles();
+        Promise.all(this.allPromise).then(
+            values => this.writeFiles()
+        ).catch( err => this.catch(err) );
     }
 
     writeFiles() {
@@ -52,10 +54,13 @@ module.exports = class HTML extends Content {
             )
         ])
         .then( 
-            () => console.log( 'HTML was write.' )
+            () => {
+                console.log( 'HTML was write.' );
+                this.done();
+            }
         )
         .catch( 
-            err => console.error(err) 
+            err => this.catch(err)
         );
     }
 
@@ -66,13 +71,16 @@ module.exports = class HTML extends Content {
                 this.url, '', [elem, this.$(elem)], this.baseDir
             ) ;
             this.videos[video.filename] = video;
+            this.allPromise.push(video.watcher);
         });
 
         // Save assets.
         this.$('img').each( (ind, elem) => {
-            this.statics.push( 
-                new Static(this.url, '', [elem, this.$(elem)], this.baseDir) 
-            );
+            let staticContent = new Static(
+                this.url, '', [elem, this.$(elem)], this.baseDir
+            ); 
+            this.statics.push(staticContent);
+            this.allPromise.push(staticContent.watcher);
         });
 
         // Remove videos.
