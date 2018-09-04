@@ -88,7 +88,7 @@ module.exports = class Generator {
         );
 
         for (let k in this.courseData) {
-            if (this.basicCourseData.indexOf(k) < 0) {
+            if (this.basicCourseData.indexOf(k) < 0 && k.substr(0, 1) !== '_') {
                 xml.att(k, this.courseData[k]);
             }
         }
@@ -109,7 +109,7 @@ module.exports = class Generator {
                 console.log('Dir: ', this.courseDirectory);
                 targz.compress({
                     src: path.join(this.courseDirectory, '/'),
-                    dest: path.join(this.courseDirectory, '../tr3600012.tar.gz'),
+                    dest: path.join(this.courseDirectory, '../tr3600014.tar.gz'),
                     tar: {
                         ignore: function(name) {
                             console.log('Name: ', name);
@@ -128,9 +128,9 @@ module.exports = class Generator {
     // Create chapters.
     createChapters() {
         let waitForChapters = [];
-        for (let k in this.courseData.chapters) {
+        for (let k in this.courseData._chapters) {
             let chapter = new Chapter(
-                this.courseData.chapters[k], 
+                this.courseData._chapters[k], 
                 this.courseDirectory, 
                 this.args
             );
