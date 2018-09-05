@@ -1,7 +1,7 @@
 const builder = require('xmlbuilder'),
     path = require('path'),
-    got = require('got'),
     util = require('../module/util'),
+    appSettings = require('./settings'),
     targz = require('targz'),
     Chapter = require('../module/content/chapter');
 
@@ -84,7 +84,8 @@ module.exports = class Generator {
         let xml = builder.create('course');
         let filePath = path.join(
             this.courseDirectory, 
-            'course/course/course.xml'
+            'course/course',
+            this.courseData.url_name + '.xml'
         );
 
         for (let k in this.courseData) {
@@ -92,12 +93,12 @@ module.exports = class Generator {
                 xml.att(k, this.courseData[k]);
             }
         }
+        xml.att('course', this.courseData.url_name);
 
         // <chapter url_name="94655354a6ec4155b5bf048447a2963e"/>
         for (let k in this.chapters) {
             xml.ele('chapter')
                 .att('url_name', this.chapters[k].filename)
-                .att('display_name', this.chapters[k].chapterData.display_name)
                 .up();
         }
 
@@ -105,11 +106,17 @@ module.exports = class Generator {
 
         util.writeFilePromise(filePath, xml.toString())
             .then( () => {
-                console.log('Last file is written.');
-                console.log('Dir: ', this.courseDirectory);
+                if (!appSettings.json.createTar) {
+                    return null;
+                }
+
                 targz.compress({
                     src: path.join(this.courseDirectory, '/'),
-                    dest: path.join(this.courseDirectory, '../tr3600014.tar.gz'),
+                    dest: path.join(
+                        this.courseDirectory, 
+                        '..', 
+                        `${appSettings.json.name}.tar.gz`
+                    ),
                     tar: {
                         ignore: function(name) {
                             console.log('Name: ', name);
@@ -118,7 +125,7 @@ module.exports = class Generator {
                     },
                 }, (err) => {
                     if (err) return console.error(err);
-                    console.log('TAR saved.');
+                    console.log("TAR saved");
                 });
             }).catch( err => {
                 console.error(err);

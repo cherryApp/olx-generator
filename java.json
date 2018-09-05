@@ -1,0 +1,353 @@
+{
+    "name": "java",
+    "createTar": false,
+    "header": "cookie|YellowSSO=B9pUg7YBQFdvKY5nKutfgiWgh0VWf0qkDa68Dp0XTrNqGjhm3DgD8tT9vGRnaRTbAi/WqqJ3nH10saiGz4GoyYTmGGHKMF0HARQ7FVLX3cip4h8A49djwTUqGim04UJncw2R87cmm0jOnTSnbaYkxnbPJ4L1c+MT4iwqIIrt/q1kqsejGp24x0ONCgIawEfEw+0HHLE9HDU2TqeE+NndFld8KIUp5uwrcCxUdmLO/Uvpfv5UvxE7VY9CGjTgRxQjYWNVe7w1AaGKD3GtokSNEQ==;",
+    "html": {
+        "root": "body > .container",
+        "remove": ".row .pager"
+    },
+    "video": {
+        "separate": false,
+        "selector": "video"
+    },
+    "course": {
+        "url_name": "training360-java-course",
+        "org": "Training360",
+        "course": "training360-java-course",
+        "cert_html_view_enabled": "true",
+        "display_name": "Java programozás",
+        "language": "hu",
+        "start": "2018-09-01T00:00",
+        "_chapters": [
+            {
+                "display_name": "Eszközkészlet",
+                "urls": [
+                    "http://localhost:3333/java/lessons/background",
+                    "http://localhost:3333/java/lessons/introjdk",
+                    "http://localhost:3333/java/lessons/intromaven",
+                    "http://localhost:3333/java/lessons/introide",
+                    "http://localhost:3333/java/lessons/introgit",
+                    "http://localhost:3333/java/lessons/packages",
+                    "http://localhost:3333/java/lessons/javaapi"
+                ]
+            },
+            {
+                "display_name": "Bevezetés a nyelvi eszközökbe",
+                "urls": [
+                    "http://localhost:3333/java/lessons/classstructure",
+                    "http://localhost:3333/java/lessons/conventions",
+                    "http://localhost:3333/java/lessons/localvariables",
+                    "http://localhost:3333/java/lessons/statements",
+                    "http://localhost:3333/java/lessons/stringtype",
+                    "http://localhost:3333/java/lessons/introdate",
+                    "http://localhost:3333/java/lessons/introcontrol"
+                ]
+            },
+            {
+                "display_name": "Bonyolultabb típusok",
+                "urls": [
+                    "http://localhost:3333/java/lessons/array",
+                    "http://localhost:3333/java/lessons/arrayofarrays",
+                    "http://localhost:3333/java/lessons/arrays",
+                    "http://localhost:3333/java/lessons/arraylist",
+                    "http://localhost:3333/java/lessons/finalmodifier",
+                    "http://localhost:3333/java/lessons/math"
+                ]
+            },
+            {
+                "display_name": "Bevezetés az osztályok és objektumok világába",
+                "urls": [
+                    "http://localhost:3333/java/lessons/objects",
+                    "http://localhost:3333/java/lessons/attributes",
+                    "http://localhost:3333/java/lessons/introconstructors",
+                    "http://localhost:3333/java/lessons/intromethods",
+                    "http://localhost:3333/java/lessons/references"
+                ]
+            },
+            {
+                "display_name": "Projektfeladat",
+                "urls": [
+                    "http://localhost:3333/java/lessons/robocode"
+                ]
+            },
+            {
+                "display_name": "Típusok és operátorok",
+                "urls": [
+                    "http://localhost:3333/java/lessons/literals",
+                    "http://localhost:3333/java/lessons/primitivetypes",
+                    "http://localhost:3333/java/lessons/enumtype",
+                    "http://localhost:3333/java/lessons/operators",
+                    "http://localhost:3333/java/lessons/typeconversion"
+                ]
+            },
+            {
+                "display_name": "Vezérlési szerkezetek",
+                "urls": [
+                    "http://localhost:3333/java/lessons/introjunit",
+                    "http://localhost:3333/java/lessons/debug",
+                    "http://localhost:3333/java/lessons/controlselection",
+                    "http://localhost:3333/java/lessons/controliteration",
+                    "http://localhost:3333/java/lessons/controladvanced",
+                    "http://localhost:3333/java/lessons/introexception"
+                ]
+            },
+            {
+                "display_name": "Programozási tételek és egyéb algoritmusok",
+                "urls": [
+                    "http://localhost:3333/java/lessons/algorithmssum",
+                    "http://localhost:3333/java/lessons/algorithmscount",
+                    "http://localhost:3333/java/lessons/algorithmsmax",
+                    "http://localhost:3333/java/lessons/algorithmsdecision",
+                    "http://localhost:3333/java/lessons/recursion",
+                    "http://localhost:3333/java/lessons/statemachine"
+                ]
+            },
+            {
+                "display_name": "String, StringBuilder",
+                "urls": [
+                    "http://localhost:3333/java/lessons/stringbasic",
+                    "http://localhost:3333/java/lessons/stringconcat",
+                    "http://localhost:3333/java/lessons/stringmethods",
+                    "http://localhost:3333/java/lessons/stringbuilder",
+                    "http://localhost:3333/java/lessons/stringscanner"
+                ]
+            },
+            {
+                "display_name": "Projektfeladat",
+                "urls": [
+                    "http://localhost:3333/java/lessons/schoolrecords"
+                ]
+            },
+            {
+                "display_name": "Attribútumok és metódusok",
+                "urls": [
+                    "http://localhost:3333/java/lessons/immutable",
+                    "http://localhost:3333/java/lessons/javabeans",
+                    "http://localhost:3333/java/lessons/methodstructure",
+                    "http://localhost:3333/java/lessons/methodparam",
+                    "http://localhost:3333/java/lessons/methodvarargs",
+                    "http://localhost:3333/java/lessons/methodchain",
+                    "http://localhost:3333/java/lessons/methoverloading",
+                    "http://localhost:3333/java/lessons/staticattrmeth"
+                ]
+            },
+            {
+                "display_name": "Konstruktorok és inicializátorok",
+                "urls": [
+                    "http://localhost:3333/java/lessons/defaultconstructor",
+                    "http://localhost:3333/java/lessons/constructoroverloading",
+                    "http://localhost:3333/java/lessons/initializer"
+                ]
+            },
+            {
+                "display_name": "Öröklődés",
+                "urls": [
+                    "http://localhost:3333/java/lessons/introinheritance",
+                    "http://localhost:3333/java/lessons/inheritanceconstructor",
+                    "http://localhost:3333/java/lessons/objectclass",
+                    "http://localhost:3333/java/lessons/inheritanceattributes",
+                    "http://localhost:3333/java/lessons/inheritancemethods"
+                ]
+            },
+            {
+                "display_name": "Absztrakt osztályok és interfészek",
+                "urls": [
+                    "http://localhost:3333/java/lessons/abstractclass",
+                    "http://localhost:3333/java/lessons/interface",
+                    "http://localhost:3333/java/lessons/interfacemethods",
+                    "http://localhost:3333/java/lessons/interfaceextends"
+                ]
+            },
+            {
+                "display_name": "Projektfeladat",
+                "urls": [
+                    "http://localhost:3333/java/lessons/catalog"
+                ]
+            },
+            {
+                "display_name": "Haladó OO elvek",
+                "urls": [
+                    "http://localhost:3333/java/lessons/polymorphism",
+                    "http://localhost:3333/java/lessons/solid",
+                    "http://localhost:3333/java/lessons/virtualmethod",
+                    "http://localhost:3333/java/lessons/isahasa"
+                ]
+            },
+            {
+                "display_name": "Kivételkezelés",
+                "urls": [
+                    "http://localhost:3333/java/lessons/exceptions",
+                    "http://localhost:3333/java/lessons/exceptionclass",
+                    "http://localhost:3333/java/lessons/exceptionmulticatch",
+                    "http://localhost:3333/java/lessons/exceptionresource"
+                ]
+            },
+            {
+                "display_name": "Belső osztályok",
+                "urls": [
+                    "http://localhost:3333/java/lessons/nestedclasses"
+                ]
+            },
+            {
+                "display_name": "Tervezési minták",
+                "urls": [
+                    "http://localhost:3333/java/lessons/dpintro",
+                    "http://localhost:3333/java/lessons/singleton",
+                    "http://localhost:3333/java/lessons/builder",
+                    "http://localhost:3333/java/lessons/templatemethod",
+                    "http://localhost:3333/java/lessons/simplefactory"
+                ]
+            },
+            {
+                "display_name": "Projektfeladat",
+                "urls": [
+                    "http://localhost:3333/java/lessons/activity"
+                ]
+            },
+            {
+                "display_name": "Generikusok",
+                "urls": [
+                    "http://localhost:3333/java/lessons/genericsusage",
+                    "http://localhost:3333/java/lessons/genericclass",
+                    "http://localhost:3333/java/lessons/genericinterface",
+                    "http://localhost:3333/java/lessons/genericmethod"
+                ]
+            },
+            {
+                "display_name": "Kollekció típusok",
+                "urls": [
+                    "http://localhost:3333/java/lessons/collectionsequalshash",
+                    "http://localhost:3333/java/lessons/collectionslist",
+                    "http://localhost:3333/java/lessons/collectionsset",
+                    "http://localhost:3333/java/lessons/collectionsqueue",
+                    "http://localhost:3333/java/lessons/collectionsmap",
+                    "http://localhost:3333/java/lessons/collectionsautoboxing"
+                ]
+            },
+            {
+                "display_name": "Alapvető algoritmusok",
+                "urls": [
+                    "http://localhost:3333/java/lessons/collectionsiterator",
+                    "http://localhost:3333/java/lessons/collectionscomp",
+                    "http://localhost:3333/java/lessons/searching",
+                    "http://localhost:3333/java/lessons/sorting",
+                    "http://localhost:3333/java/lessons/collectionsclass"
+                ]
+            },
+            {
+                "display_name": "Adatszerkezetek",
+                "urls": [
+                    "http://localhost:3333/java/lessons/properties",
+                    "http://localhost:3333/java/lessons/tree",
+                    "http://localhost:3333/java/lessons/xml",
+                    "http://localhost:3333/java/lessons/clone"
+                ]
+            },
+            {
+                "display_name": "Projektfeladat",
+                "urls": [
+                    "http://localhost:3333/java/lessons/timesheet"
+                ]
+            },
+            {
+                "display_name": "Formázás és Locale kezelés",
+                "urls": [
+                    "http://localhost:3333/java/lessons/formatlocaleregexp",
+                    "http://localhost:3333/java/lessons/formatlocale",
+                    "http://localhost:3333/java/lessons/formatlocalebundle",
+                    "http://localhost:3333/java/lessons/formatlocalemessage",
+                    "http://localhost:3333/java/lessons/formatlocaleprintf",
+                    "http://localhost:3333/java/lessons/bigdecimal"
+                ]
+            },
+            {
+                "display_name": "Dátum és időkezelés",
+                "urls": [
+                    "http://localhost:3333/java/lessons/dateoldtypes",
+                    "http://localhost:3333/java/lessons/datenewtypes",
+                    "http://localhost:3333/java/lessons/dateperiod",
+                    "http://localhost:3333/java/lessons/dateduration",
+                    "http://localhost:3333/java/lessons/datedaylight"
+                ]
+            },
+            {
+                "display_name": "Fájlkezelés",
+                "urls": [
+                    "http://localhost:3333/java/lessons/fileclass",
+                    "http://localhost:3333/java/lessons/iostreams",
+                    "http://localhost:3333/java/lessons/ioreaderwriter",
+                    "http://localhost:3333/java/lessons/ioresource",
+                    "http://localhost:3333/java/lessons/niopath",
+                    "http://localhost:3333/java/lessons/niofiles"
+                ]
+            },
+            {
+                "display_name": "Projektfeladat",
+                "urls": [
+                    "undefined"
+                ]
+            },
+            {
+                "display_name": "Lambda kifejezések",
+                "urls": [
+                    "http://localhost:3333/java/lessons/lambdaintro",
+                    "http://localhost:3333/java/lessons/lambdaoptional",
+                    "http://localhost:3333/java/lessons/lambdastreams",
+                    "http://localhost:3333/java/lessons/lambdaintermediate"
+                ]
+            },
+            {
+                "display_name": "Streamek",
+                "urls": [
+                    "http://localhost:3333/java/lessons/lambdacollectors",
+                    "http://localhost:3333/java/lessons/lambdaparallel",
+                    "http://localhost:3333/java/lessons/lambdaprimitives"
+                ]
+            },
+            {
+                "display_name": "Párhuzamosság",
+                "urls": [
+                    "http://localhost:3333/java/lessons/concurrencythreads",
+                    "http://localhost:3333/java/lessons/concurrencyexecutors",
+                    "http://localhost:3333/java/lessons/concurrencysync"
+                ]
+            },
+            {
+                "display_name": "Haladó párhuzamosság",
+                "urls": [
+                    "http://localhost:3333/java/lessons/concurrencystreams",
+                    "http://localhost:3333/java/lessons/concurrencyapi"
+                ]
+            },
+            {
+                "display_name": "Architektúrák",
+                "urls": [
+                    "http://localhost:3333/java/lessons/jvm",
+                    "http://localhost:3333/java/lessons/distjar",
+                    "http://localhost:3333/java/lessons/thirdparty",
+                    "http://localhost:3333/java/lessons/logging",
+                    "http://localhost:3333/java/lessons/swing",
+                    "http://localhost:3333/java/lessons/javafx",
+                    "http://localhost:3333/java/lessons/server",
+                    "http://localhost:3333/java/lessons/raspberrypi"
+                ]
+            },
+            {
+                "display_name": "Haladó témakörök",
+                "urls": [
+                    "http://localhost:3333/java/lessons/dependencyinjection",
+                    "http://localhost:3333/java/lessons/annotations",
+                    "http://localhost:3333/java/lessons/reflection",
+                    "http://localhost:3333/java/lessons/dynamicproxy",
+                    "http://localhost:3333/java/lessons/classloader"
+                ]
+            },
+            {
+                "display_name": "Projektfeladat",
+                "urls": [
+                    "http://localhost:3333/java/lessons/auctionportal"
+                ]
+            }
+        ]
+    }
+}

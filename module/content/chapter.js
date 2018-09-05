@@ -37,10 +37,7 @@ module.exports = class Chapter {
         
         for (let k in this.chapterData.urls) {
             let client = got.extend({
-                baseUrl: this.chapterData.urls[k].replace(
-                    'https://yellowroad.training360.com',
-                    'http://localhost:3333'
-                ),
+                baseUrl: this.chapterData.urls[k],
                 headers: this.args.header,
                 encoding: 'utf8'
             });
@@ -80,7 +77,7 @@ module.exports = class Chapter {
         */
         let xml = builder.create('chapter');
         xml.att('display_name', this.chapterData.display_name);
-        xml.att('start', '&quot;1970-01-01T05:00:00+00:00&quot;');
+        // xml.att('start', '&quot;1970-01-01T05:00:00+00:00&quot;');
 
         for (let k in this.sequentials) {
             xml.ele('sequential')

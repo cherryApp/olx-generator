@@ -21,16 +21,19 @@ module.exports = class Video extends Content {
         // Video element.
         let atts = this.data[0].attribs;
         let xml = builder.create('video');
-        xml.att('url_name', this.filename);
         xml.att('display_name', this.display_name);
-        for (let k in atts) {
-            xml.att(k, atts[k]);
-        }
-        xml.ele('source', sAtts).up();        
+        xml.att('html5_sources', `["${sAtts.src}"]`);
+        xml.ele('source', { src: sAtts.src }).up();        
         
         // Finishing.
         xml.end({pretty: true});
         this.xml = xml.toString();
+
+        /*
+        this.xml = `<video source="https://video.training360.com/Streams/YR-BASICS/yellowroad-basics-karakterek-kodolasa.mp4">
+        <source src="https://video.training360.com/Streams/YR-BASICS/yellowroad-basics-karakterek-kodolasa.mp4"/>
+      </video>`;
+      */
 
         util.writeFilePromise(
             path.join(this.baseDir, 'course/video', this.filename+'.xml'),

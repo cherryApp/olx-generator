@@ -1,0 +1,315 @@
+{
+    "name": "dotnet",
+    "createTar": false,
+    "header": "cookie|YellowSSO=B9pUg7YBQFdvKY5nKutfgiWgh0VWf0qkDa68Dp0XTrNqGjhm3DgD8tT9vGRnaRTbAi/WqqJ3nH10saiGz4GoyYTmGGHKMF0HARQ7FVLX3cip4h8A49djwTUqGim04UJncw2R87cmm0jOnTSnbaYkxnbPJ4L1c+MT4iwqIIrt/q1kqsejGp24x0ONCgIawEfEw+0HHLE9HDU2TqeE+NndFld8KIUp5uwrcCxUdmLO/Uvpfv5UvxE7VY9CGjTgRxQjYWNVe7w1AaGKD3GtokSNEQ==;",
+    "html": {
+        "root": "body > .container",
+        "remove": ".row .pager"
+    },
+    "video": {
+        "separate": false,
+        "selector": "video"
+    },
+    "silent": true,
+    "course": {
+        "url_name": "training360-dotnet-course",
+        "org": "Training360",
+        "course": "training360-dotnet-course",
+        "cert_html_view_enabled": "true",
+        "display_name": "C# Programozás",
+        "language": "hu",
+        "start": "2018-09-01T00:00",
+        "_chapters": [
+            {
+                "display_name": ".NET alapozás",
+                "urls": [
+                    "http://localhost:3333/csharp/lessons/csharpintro",
+                    "http://localhost:3333/csharp/lessons/visualstudio",
+                    "http://localhost:3333/csharp/lessons/clr",
+                    "http://localhost:3333/csharp/lessons/basic-syntax",
+                    "http://localhost:3333/csharp/lessons/xamlintro"
+                ]
+            },
+            {
+                "display_name": "ADO.NET",
+                "urls": [
+                    "http://localhost:3333/csharp/lessons/adonet-objectmodel",
+                    "http://localhost:3333/csharp/lessons/dataset"
+                ]
+            },
+            {
+                "display_name": "Alap algoritmusok",
+                "urls": [
+                    "http://localhost:3333/csharp/lessons/algorithmcount",
+                    "http://localhost:3333/csharp/lessons/algorithmdecision",
+                    "http://localhost:3333/csharp/lessons/algorithmsum",
+                    "http://localhost:3333/csharp/lessons/algorithmminmax",
+                    "http://localhost:3333/csharp/lessons/recursion"
+                ]
+            },
+            {
+                "display_name": "Aszinkron műveletek",
+                "urls": [
+                    "http://localhost:3333/csharp/lessons/dispatcher",
+                    "http://localhost:3333/csharp/lessons/async-await",
+                    "http://localhost:3333/csharp/lessons/lock"
+                ]
+            },
+            {
+                "display_name": "Az objektum élete",
+                "urls": [
+                    "http://localhost:3333/csharp/lessons/garbagecollector",
+                    "http://localhost:3333/csharp/lessons/disposepattern"
+                ]
+            },
+            {
+                "display_name": "Bevezetés az osztályok és objektumok világába",
+                "urls": [
+                    "http://localhost:3333/csharp/lessons/classintro",
+                    "http://localhost:3333/csharp/lessons/unittesting",
+                    "http://localhost:3333/csharp/lessons/methodintro",
+                    "http://localhost:3333/csharp/lessons/debugging",
+                    "http://localhost:3333/csharp/lessons/property",
+                    "http://localhost:3333/csharp/lessons/namespaces"
+                ]
+            },
+            {
+                "display_name": "Binding",
+                "urls": [
+                    "http://localhost:3333/csharp/lessons/wpf-binding",
+                    "http://localhost:3333/csharp/lessons/wpf-binding-in-code",
+                    "http://localhost:3333/csharp/lessons/wpf-binding-collections"
+                ]
+            },
+            {
+                "display_name": "C# nyelvi alapok",
+                "urls": [
+                    "http://localhost:3333/csharp/lessons/variables",
+                    "http://localhost:3333/csharp/lessons/simpletypes",
+                    "http://localhost:3333/csharp/lessons/literals",
+                    "http://localhost:3333/csharp/lessons/string",
+                    "http://localhost:3333/csharp/lessons/nullabletype",
+                    "http://localhost:3333/csharp/lessons/expressions"
+                ]
+            },
+            {
+                "display_name": "Entity Framework",
+                "urls": [
+                    "http://localhost:3333/csharp/lessons/entityframework",
+                    "http://localhost:3333/csharp/lessons/ef-customizing-generated-classes",
+                    "http://localhost:3333/csharp/lessons/ef-crud",
+                    "http://localhost:3333/csharp/lessons/ef-linq"
+                ]
+            },
+            {
+                "display_name": "Extra",
+                "urls": [
+                    "http://localhost:3333/csharp/lessons/monitoring",
+                    "http://localhost:3333/csharp/lessons/dynamicobjects",
+                    "http://localhost:3333/csharp/lessons/reflection",
+                    "http://localhost:3333/csharp/lessons/custom-attributes",
+                    "http://localhost:3333/csharp/lessons/signing-assemblies",
+                    "http://localhost:3333/csharp/lessons/encrypting"
+                ]
+            },
+            {
+                "display_name": "Fájlkezelés",
+                "urls": [
+                    "http://localhost:3333/csharp/lessons/filemanagement-intro",
+                    "http://localhost:3333/csharp/lessons/fileclass-read-write",
+                    "http://localhost:3333/csharp/lessons/fileclass-operations",
+                    "http://localhost:3333/csharp/lessons/fileclass-information",
+                    "http://localhost:3333/csharp/lessons/fileinfoclass",
+                    "http://localhost:3333/csharp/lessons/directoryclass",
+                    "http://localhost:3333/csharp/lessons/directoryinfoclass",
+                    "http://localhost:3333/csharp/lessons/pathclass"
+                ]
+            },
+            {
+                "display_name": "Generikus típusok",
+                "urls": [
+                    "http://localhost:3333/csharp/lessons/generics",
+                    "http://localhost:3333/csharp/lessons/generics-constraints",
+                    "http://localhost:3333/csharp/lessons/generic-collections",
+                    "http://localhost:3333/csharp/lessons/generics-inheritance"
+                ]
+            },
+            {
+                "display_name": "Haladó OO elvek",
+                "urls": [
+                    "http://localhost:3333/csharp/lessons/ooconcepts",
+                    "http://localhost:3333/csharp/lessons/solid",
+                    "http://localhost:3333/csharp/lessons/isahasa"
+                ]
+            },
+            {
+                "display_name": "Interfészek",
+                "urls": [
+                    "http://localhost:3333/csharp/lessons/interfaces",
+                    "http://localhost:3333/csharp/lessons/loosecoupling",
+                    "http://localhost:3333/csharp/lessons/icomparable",
+                    "http://localhost:3333/csharp/lessons/icomparer"
+                ]
+            },
+            {
+                "display_name": "Kollekció interfészek",
+                "urls": [
+                    "http://localhost:3333/csharp/lessons/collection-interfaces",
+                    "http://localhost:3333/csharp/lessons/generic-collection-interfaces",
+                    "http://localhost:3333/csharp/lessons/enumerable"
+                ]
+            },
+            {
+                "display_name": "Kollekció osztályok",
+                "urls": [
+                    "http://localhost:3333/csharp/lessons/collections",
+                    "http://localhost:3333/csharp/lessons/queue",
+                    "http://localhost:3333/csharp/lessons/stack",
+                    "http://localhost:3333/csharp/lessons/hashtable",
+                    "http://localhost:3333/csharp/lessons/sortedlist",
+                    "http://localhost:3333/csharp/lessons/bitarray",
+                    "http://localhost:3333/csharp/lessons/specialized-collections"
+                ]
+            },
+            {
+                "display_name": "LINQ",
+                "urls": [
+                    "http://localhost:3333/csharp/lessons/linqtoobjects",
+                    "http://localhost:3333/csharp/lessons/anonymoustype",
+                    "http://localhost:3333/csharp/lessons/lambda",
+                    "http://localhost:3333/csharp/lessons/linqqueries"
+                ]
+            },
+            {
+                "display_name": "Metódusok",
+                "urls": [
+                    "http://localhost:3333/csharp/lessons/parameters",
+                    "http://localhost:3333/csharp/lessons/parameterarray",
+                    "http://localhost:3333/csharp/lessons/methodoverload",
+                    "http://localhost:3333/csharp/lessons/optionalparameters",
+                    "http://localhost:3333/csharp/lessons/namedarguments",
+                    "http://localhost:3333/csharp/lessons/methodchaining",
+                    "http://localhost:3333/csharp/lessons/constructors",
+                    "http://localhost:3333/csharp/lessons/structs",
+                    "http://localhost:3333/csharp/lessons/eventhandler",
+                    "http://localhost:3333/csharp/lessons/events"
+                ]
+            },
+            {
+                "display_name": "Speciális osztályok és tagok",
+                "urls": [
+                    "http://localhost:3333/csharp/lessons/static",
+                    "http://localhost:3333/csharp/lessons/abstract",
+                    "http://localhost:3333/csharp/lessons/sealed",
+                    "http://localhost:3333/csharp/lessons/accessmodifiers",
+                    "http://localhost:3333/csharp/lessons/nestedclass",
+                    "http://localhost:3333/csharp/lessons/indexer"
+                ]
+            },
+            {
+                "display_name": "Streamek",
+                "urls": [
+                    "http://localhost:3333/csharp/lessons/streams",
+                    "http://localhost:3333/csharp/lessons/filestreamclass",
+                    "http://localhost:3333/csharp/lessons/streamreader-streamwriter-classes",
+                    "http://localhost:3333/csharp/lessons/binaryreader-binarywriter",
+                    "http://localhost:3333/csharp/lessons/streamreader-streamwriter"
+                ]
+            },
+            {
+                "display_name": "Stílusok",
+                "urls": [
+                    "http://localhost:3333/csharp/lessons/wpf-resources",
+                    "http://localhost:3333/csharp/lessons/wpf-styles"
+                ]
+            },
+            {
+                "display_name": "Szerializáció",
+                "urls": [
+                    "http://localhost:3333/csharp/lessons/serialization",
+                    "http://localhost:3333/csharp/lessons/formatters",
+                    "http://localhost:3333/csharp/lessons/customizing-formatter-serialization",
+                    "http://localhost:3333/csharp/lessons/datacontractserializers",
+                    "http://localhost:3333/csharp/lessons/xmlserializer",
+                    "http://localhost:3333/csharp/lessons/customizing-xmlserializer"
+                ]
+            },
+            {
+                "display_name": "Task",
+                "urls": [
+                    "http://localhost:3333/csharp/lessons/tasks",
+                    "http://localhost:3333/csharp/lessons/tasks-linking",
+                    "http://localhost:3333/csharp/lessons/tasks-exceptionhandling",
+                    "http://localhost:3333/csharp/lessons/tasks-cancellation",
+                    "http://localhost:3333/csharp/lessons/tasks-parallel"
+                ]
+            },
+            {
+                "display_name": "Tervezési minták",
+                "urls": [
+                    "http://localhost:3333/csharp/lessons/designpatterns",
+                    "http://localhost:3333/csharp/lessons/singleton",
+                    "http://localhost:3333/csharp/lessons/templatemethod",
+                    "http://localhost:3333/csharp/lessons/simplefactory"
+                ]
+            },
+            {
+                "display_name": "Típusokról bővebben",
+                "urls": [
+                    "http://localhost:3333/csharp/lessons/converting",
+                    "http://localhost:3333/csharp/lessons/array",
+                    "http://localhost:3333/csharp/lessons/math-and-random",
+                    "http://localhost:3333/csharp/lessons/constants",
+                    "http://localhost:3333/csharp/lessons/arraylist",
+                    "http://localhost:3333/csharp/lessons/reference-vs-valuetype",
+                    "http://localhost:3333/csharp/lessons/boxing-unboxing",
+                    "http://localhost:3333/csharp/lessons/enum",
+                    "http://localhost:3333/csharp/lessons/stringmethods",
+                    "http://localhost:3333/csharp/lessons/stringbuilder"
+                ]
+            },
+            {
+                "display_name": "User Interface megtervezése",
+                "urls": [
+                    "http://localhost:3333/csharp/lessons/wpf-controls",
+                    "http://localhost:3333/csharp/lessons/wpf-layouts",
+                    "http://localhost:3333/csharp/lessons/wpf-usercontrol"
+                ]
+            },
+            {
+                "display_name": "Vezérlési szerkezetek",
+                "urls": [
+                    "http://localhost:3333/csharp/lessons/selection",
+                    "http://localhost:3333/csharp/lessons/iteration",
+                    "http://localhost:3333/csharp/lessons/exceptionhandling",
+                    "http://localhost:3333/csharp/lessons/unittesting-advanced"
+                ]
+            },
+            {
+                "display_name": "Webszolgáltatás használata kliens oldalon",
+                "urls": [
+                    "http://localhost:3333/csharp/lessons/using-webservice",
+                    "http://localhost:3333/csharp/lessons/using-webservice-without-proxy"
+                ]
+            },
+            {
+                "display_name": "Webszolgáltatás készítése",
+                "urls": [
+                    "http://localhost:3333/csharp/lessons/creating-webservice"
+                ]
+            },
+            {
+                "display_name": "Öröklődés",
+                "urls": [
+                    "http://localhost:3333/csharp/lessons/inheritance",
+                    "http://localhost:3333/csharp/lessons/inheritance-constructors",
+                    "http://localhost:3333/csharp/lessons/inheritance-methods",
+                    "http://localhost:3333/csharp/lessons/objectclass",
+                    "http://localhost:3333/csharp/lessons/extending-builtin-classes",
+                    "http://localhost:3333/csharp/lessons/customexception",
+                    "http://localhost:3333/csharp/lessons/extensionmethods"
+                ]
+            }
+        ]
+    }
+}

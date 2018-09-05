@@ -3,6 +3,7 @@ const Content = require('./content'),
       Video = require('./video'),
       Static = require('./static'),
       util = require('../util'),
+      appSettings = require('../settings'),
       cheerio = require('cheerio'),
       builder = require('xmlbuilder'),
       path = require('path');
@@ -26,7 +27,7 @@ module.exports = class HTML extends Content {
         this.display_name = this.$('title').text();
         this.getVideosAndAssets();        
         
-        let body = cheerio.load( this.$('body > .container').html() );
+        let body = cheerio.load( this.$(appSettings.json.html.root).html() );
         this.body = body.html({decodeEntities: false})  
         .replace(/<html>|<\/html>|<body>|<\/body>|<head>|<\/head>/g, '');
         
@@ -65,25 +66,35 @@ module.exports = class HTML extends Content {
     }
 
     getVideosAndAssets() {
-        // Save videos.
-        this.$('video').each( (ind, elem) => {
-            let video = new Video(
-                this.url, '', [elem, this.$(elem)], this.baseDir
-            ) ;
-            this.videos[video.filename] = video;
-            this.allPromise.push(video.watcher);
-        });
-
         // Save assets.
         this.$('img').each( (ind, elem) => {
+            let cheerioElem = this.$(elem);
+            let newSrc = path.basename(cheerioElem.attr('src'));
             let staticContent = new Static(
-                this.url, '', [elem, this.$(elem)], this.baseDir
+                this.url, '', [elem, cheerioElem], this.baseDir
             ); 
             this.statics.push(staticContent);
             this.allPromise.push(staticContent.watcher);
+            cheerioElem.attr( 'src', `/static/${newSrc}` );
         });
 
-        // Remove videos.
-        this.$('body > .container').find('video').remove();
+        // Remove unnecessary elements.
+        this.$(appSettings.json.html.root)
+            .find(appSettings.json.html.remove)
+            .remove();
+
+        if (appSettings.json.video.separate) {
+            this.$(appSettings.json.video.selector).each( (ind, elem) => {
+                let video = new Video(
+                    this.url, '', [elem, this.$(elem)], this.baseDir
+                ) ;
+                this.videos[video.filename] = video;
+                this.allPromise.push(video.watcher);
+            });
+
+            this.$(appSettings.json.html.root)
+                .find(appSettings.json.video.selector)
+                .remove();
+        }
     }
 }

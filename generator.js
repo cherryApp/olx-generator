@@ -1,259 +1,38 @@
+// Use this:
+// node generator -j generator.json
+
 const http = require('http'),
     path = require('path'),
+    appSettings = require('./module/settings'),
     args = require('./module/parser'),
+    util = require('./module/util'),
     OlxGenerator = require('./module/olxGenerator');
 
-// Check url.
-if (!args.url) {
-    console.error('Please give the url!');
+// Check json.
+if (!args.json) {
+    console.error('Please give the json!');
     process.exit(1);
 }
 
-// Use this with cookie hack.
-// node generator -u 'https://yellowroad.training360.com/lesson/basic/week2/02_char_coding' -head 'cookie|YellowSSO=B9pUg7YBQFdvKY5nKutfgiWgh0VWf0qkDa68Dp0XTrNqGjhm3DgD8tT9vGRnaRTbAi/WqqJ3nH10saiGz4GoyYTmGGHKMF0HARQ7FVLX3cip4h8A49djwTUqGim04UJncw2R87cmm0jOnTSnbaYkxnbPJ4L1c+MT4iwqIIrt/q1kqsejGp24x0ONCgIawEfEw+0HHLE9HDU2TqeE+NndFld8KIUp5uwrcCxUdmLO/Uvpfv5UvxE7VY9CGjTgRxQjYWNVe7w1AaGKD3GtokSNEQ==;'
-
-/*
-["http://localhost:3333/lesson/basic/week2/02_char_coding",
-"http://localhost:3333/lesson/basic/week2/01_html_basic",
-"http://localhost:3333/lesson/basic/week2/01_variable_basics",
-"http://localhost:3333/lesson/basic/week2/02_html_block_elements",
-"http://localhost:3333/lesson/basic/week2/02_variable_as_object",
-"http://localhost:3333/lesson/basic/week2/03_html_lists",
-"http://localhost:3333/lesson/basic/week2/03_variable_types_number",
-"http://localhost:3333/lesson/basic/week2/04_html_form",
-"http://localhost:3333/lesson/basic/week2/04_variable_types_number_methods",
-"http://localhost:3333/lesson/basic/week2/05_html_check_radio",
-"http://localhost:3333/lesson/basic/week2/05_variable_types_string",
-"http://localhost:3333/lesson/basic/week2/06_html_select",
-"http://localhost:3333/lesson/basic/week2/06_variable_types_string_methods",
-"http://localhost:3333/lesson/basic/week2/07_html_form_full",
-"http://localhost:3333/lesson/basic/week2/07_variable_types_boolean",
-"http://localhost:3333/lesson/basic/week2/08_variable_types_array",
-"http://localhost:3333/lesson/basic/week2/08_html_table",
-"http://localhost:3333/lesson/basic/week2/09_html_links",
-"http://localhost:3333/lesson/basic/week2/09_variable_types_array_methods",
-"http://localhost:3333/lesson/basic/week2/10_html_resources",
-"http://localhost:3333/lesson/basic/week2/10_variable_types_object",
-"http://localhost:3333/lesson/basic/week1/01_command_line",
-"http://localhost:3333/lesson/basic/week1/02_folders",
-"http://localhost:3333/lesson/basic/week1/11_source_control_basics",
-"http://localhost:3333/lesson/basic/week1/12_git_basics",
-"http://localhost:3333/lesson/basic/week1/13_git_install",
-"http://localhost:3333/lesson/basic/week1/14_git_config",
-"http://localhost:3333/lesson/basic/week1/15_git_init",
-"http://localhost:3333/lesson/basic/week1/16_git_clone",
-"http://localhost:3333/lesson/basic/week1/17_git_status",
-"http://localhost:3333/lesson/basic/week1/18_git_remote",
-"http://localhost:3333/lesson/basic/week1/19_github",
-"http://localhost:3333/lesson/basic/week1/20_git_revert",
-"http://localhost:3333/lesson/basic/week1/21_git_reset",
-"http://localhost:3333/lesson/basic/week1/22_git_log",
-"http://localhost:3333/lesson/basic/week1/23_git_diff",
-"http://localhost:3333/lesson/basic/week1/24_git_status",
-"http://localhost:3333/lesson/basic/week1/26_git_grep",
-"http://localhost:3333/lesson/basic/week1/27_git_branch",
-"http://localhost:3333/lesson/basic/week1/29_git_merge",
-"http://localhost:3333/lesson/basic/week1/30_git_conflict",
-"http://localhost:3333/lesson/basic/week3/07_loops_for",
-"http://localhost:3333/lesson/basic/week3/01_css_basic_selectors",
-"http://localhost:3333/lesson/basic/week3/10_loops_forin",
-"http://localhost:3333/lesson/basic/week3/05_css_selector_advanced",
-"http://localhost:3333/lesson/basic/week3/09_loops_while",
-"http://localhost:3333/lesson/basic/week3/02_css_colors",
-"http://localhost:3333/lesson/basic/week3/03_statement_if",
-"http://localhost:3333/lesson/basic/week3/14_css_box_model",
-"http://localhost:3333/lesson/basic/week3/04_statement_switch",
-"http://localhost:3333/lesson/basic/week3/06_css_fonts",
-"http://localhost:3333/lesson/basic/week3/08_algorithm_intro",
-"http://localhost:3333/lesson/basic/week3/11_algorithms_basic",
-"http://localhost:3333/lesson/basic/week3/12_logic_search",
-"http://localhost:3333/lesson/basic/week3/17_logic_sort",
-"http://localhost:3333/lesson/basic/week3/13_sort_replace",
-"http://localhost:3333/lesson/basic/week3/17_algorithms_sum_count",
-"http://localhost:3333/lesson/basic/week3/18_algorithms_min_dec",
-"http://localhost:3333/lesson/basic/week3/18_logic_replace_order",
-"http://localhost:3333/lesson/basic/week3/17_css_transition",
-"http://localhost:3333/lesson/basic/week3/18_css_animation",
-"http://localhost:3333/lesson/basic/week3/19_css_media_query",
-"http://localhost:3333/lesson/basic/week3/20_css_forms",
-"http://localhost:3333/lesson/basic/week4/21_dom_query",
-"http://localhost:3333/lesson/basic/week4/21_javascript_function",
-"http://localhost:3333/lesson/basic/week4/22_dom_attributes",
-"http://localhost:3333/lesson/basic/week4/22_javascript_func_params",
-"http://localhost:3333/lesson/basic/week4/23_dom_loops",
-"http://localhost:3333/lesson/basic/week4/23_javascript_func_scope",
-"http://localhost:3333/lesson/basic/week4/24_dom_element",
-"http://localhost:3333/lesson/basic/week4/24_javascript_json",
-"http://localhost:3333/lesson/basic/week4/25_dom_html_value",
-"http://localhost:3333/lesson/basic/week4/25_javascript_array_methods",
-"http://localhost:3333/lesson/basic/week4/26_dom_style",
-"http://localhost:3333/lesson/basic/week4/26_javascript_date",
-"http://localhost:3333/lesson/basic/week4/27_dom_child",
-"http://localhost:3333/lesson/basic/week4/27_dom_events",
-"http://localhost:3333/lesson/basic/week4/28_dom_handle_children",
-"http://localhost:3333/lesson/basic/week4/28_class_basic",
-"http://localhost:3333/lesson/basic/week4/28_class_extend",
-"http://localhost:3333/lesson/basic/week4/28_clean_code",
-"http://localhost:3333/lesson/basic/week4/28_dom_drag_drop",
-"http://localhost:3333/lesson/basic/week4/29_dom_multimedia",
-"http://localhost:3333/lesson/basic/week4/29_dom_video_player",
-"http://localhost:3333/lesson/basic/week4/30_dom_animated_header",
-"http://localhost:3333/lesson/basic/week6/01_sql_install",
-"http://localhost:3333/lesson/basic/week6/02_sql_intro",
-"http://localhost:3333/lesson/basic/week6/03_sql_select",
-"http://localhost:3333/lesson/basic/week6/04_sql_where",
-"http://localhost:3333/lesson/basic/week6/05_sql_and_or_not",
-"http://localhost:3333/lesson/basic/week6/06_sql_order_by",
-"http://localhost:3333/lesson/basic/week6/07_sql_insert",
-"http://localhost:3333/lesson/basic/week6/08_sql_update",
-"http://localhost:3333/lesson/basic/week6/09_sql_delete",
-"http://localhost:3333/lesson/basic/week6/10_sql_min_max",
-"http://localhost:3333/lesson/basic/week6/11_sql_count_avg_sum",
-"http://localhost:3333/lesson/basic/week6/12_sql_group_by",
-"http://localhost:3333/lesson/basic/week6/13_sql_like",
-"http://localhost:3333/lesson/basic/week6/14_sql_joins",
-"http://localhost:3333/lesson/basic/week6/15_sql_keys",
-"http://localhost:3333/lesson/basic/week6/16_sql_auto_increment",
-"http://localhost:3333/lesson/basic/week6/17_sql_union",
-]
-*/
-
 // Init course.
-let courseData = {
-    url_name: "training360-basic-course",
-    org: "Training360",
-    course: "Bevezetés a programozásba",
-    advanced_modules: "[&quot;annotatable&quot;, &quot;videoalpha&quot;, &quot;openassessment&quot;]", 
-    cert_html_view_enabled: "true",
-    display_name: "Programozási alapismeretek", 
-    language: "hu",
-    start: "&quot;2018-09-01T00:00:00+00:00&quot;"
-};
+let jsonFile = path.join(__dirname, args.json);
+appSettings.init(jsonFile)
+    .then( jsonSettings => {
+        if (jsonSettings.silent) {
+            console.log = () => {};
+        }
+        try {
+            let courseDirectory = path.join(
+                __dirname, 'olx', jsonSettings.name
+            );
+            args.header = util.parseHeaders(jsonSettings.header);
+            const course = new OlxGenerator(
+                jsonSettings.course, 
+                courseDirectory, 
+                args
+            );
+        } catch (err) {
+            console.error('Error while processing: ', err);
+        }
+    });
 
-courseData._chapters = [
-    {
-        display_name: "HTML, CSS, JS - tartalom, stílus, dinamika",
-        urls: ["https://yellowroad.training360.com/lesson/basic/week2/02_char_coding",
-        "https://yellowroad.training360.com/lesson/basic/week2/01_html_basic",
-        "https://yellowroad.training360.com/lesson/basic/week2/01_variable_basics",
-        "https://yellowroad.training360.com/lesson/basic/week2/02_html_block_elements",
-        "https://yellowroad.training360.com/lesson/basic/week2/02_variable_as_object",
-        "https://yellowroad.training360.com/lesson/basic/week2/03_html_lists",
-        "https://yellowroad.training360.com/lesson/basic/week2/03_variable_types_number",
-        "https://yellowroad.training360.com/lesson/basic/week2/04_html_form",
-        "https://yellowroad.training360.com/lesson/basic/week2/04_variable_types_number_methods",
-        "https://yellowroad.training360.com/lesson/basic/week2/05_html_check_radio",
-        "https://yellowroad.training360.com/lesson/basic/week2/05_variable_types_string",
-        "https://yellowroad.training360.com/lesson/basic/week2/06_html_select",
-        "https://yellowroad.training360.com/lesson/basic/week2/06_variable_types_string_methods",
-        "https://yellowroad.training360.com/lesson/basic/week2/07_html_form_full",
-        "https://yellowroad.training360.com/lesson/basic/week2/07_variable_types_boolean",
-        "https://yellowroad.training360.com/lesson/basic/week2/08_variable_types_array",
-        "https://yellowroad.training360.com/lesson/basic/week2/08_html_table",
-        "https://yellowroad.training360.com/lesson/basic/week2/09_html_links",
-        "https://yellowroad.training360.com/lesson/basic/week2/09_variable_types_array_methods",
-        "https://yellowroad.training360.com/lesson/basic/week2/10_html_resources",
-        "https://yellowroad.training360.com/lesson/basic/week2/10_variable_types_object"
-        ]
-    },
-    {
-        display_name: "Git és a parancssor",
-        urls: ["http://localhost:3333/lesson/basic/week1/01_command_line",
-        "http://localhost:3333/lesson/basic/week1/02_folders",
-        "http://localhost:3333/lesson/basic/week1/11_source_control_basics",
-        "http://localhost:3333/lesson/basic/week1/12_git_basics",
-        "http://localhost:3333/lesson/basic/week1/13_git_install",
-        "http://localhost:3333/lesson/basic/week1/14_git_config",
-        "http://localhost:3333/lesson/basic/week1/15_git_init",
-        "http://localhost:3333/lesson/basic/week1/16_git_clone",
-        "http://localhost:3333/lesson/basic/week1/17_git_status",
-        "http://localhost:3333/lesson/basic/week1/18_git_remote",
-        "http://localhost:3333/lesson/basic/week1/19_github",
-        "http://localhost:3333/lesson/basic/week1/20_git_revert",
-        "http://localhost:3333/lesson/basic/week1/21_git_reset",
-        "http://localhost:3333/lesson/basic/week1/22_git_log",
-        "http://localhost:3333/lesson/basic/week1/23_git_diff",
-        "http://localhost:3333/lesson/basic/week1/24_git_status",
-        "http://localhost:3333/lesson/basic/week1/26_git_grep",
-        "http://localhost:3333/lesson/basic/week1/27_git_branch",
-        "http://localhost:3333/lesson/basic/week1/29_git_merge",
-        "http://localhost:3333/lesson/basic/week1/30_git_conflict"
-        ]
-    },
-    {
-        display_name: "JS és CSS - szép új világ",
-        urls: ["http://localhost:3333/lesson/basic/week3/07_loops_for",
-        "http://localhost:3333/lesson/basic/week3/01_css_basic_selectors",
-        "http://localhost:3333/lesson/basic/week3/10_loops_forin",
-        "http://localhost:3333/lesson/basic/week3/05_css_selector_advanced",
-        "http://localhost:3333/lesson/basic/week3/09_loops_while",
-        "http://localhost:3333/lesson/basic/week3/02_css_colors",
-        "http://localhost:3333/lesson/basic/week3/03_statement_if",
-        "http://localhost:3333/lesson/basic/week3/14_css_box_model",
-        "http://localhost:3333/lesson/basic/week3/04_statement_switch",
-        "http://localhost:3333/lesson/basic/week3/06_css_fonts",
-        "http://localhost:3333/lesson/basic/week3/08_algorithm_intro",
-        "http://localhost:3333/lesson/basic/week3/11_algorithms_basic",
-        "http://localhost:3333/lesson/basic/week3/12_logic_search",
-        "http://localhost:3333/lesson/basic/week3/17_logic_sort",
-        "http://localhost:3333/lesson/basic/week3/13_sort_replace",
-        "http://localhost:3333/lesson/basic/week3/17_algorithms_sum_count",
-        "http://localhost:3333/lesson/basic/week3/18_algorithms_min_dec",
-        "http://localhost:3333/lesson/basic/week3/18_logic_replace_order",
-        "http://localhost:3333/lesson/basic/week3/17_css_transition",
-        "http://localhost:3333/lesson/basic/week3/18_css_animation",
-        "http://localhost:3333/lesson/basic/week3/19_css_media_query",
-        "http://localhost:3333/lesson/basic/week3/20_css_forms"
-        ]
-    },
-    {
-        display_name: "Robbants - dinamikus Web",
-        urls: ["http://localhost:3333/lesson/basic/week4/21_dom_query",
-        "http://localhost:3333/lesson/basic/week4/21_javascript_function",
-        "http://localhost:3333/lesson/basic/week4/22_dom_attributes",
-        "http://localhost:3333/lesson/basic/week4/22_javascript_func_params",
-        "http://localhost:3333/lesson/basic/week4/23_dom_loops",
-        "http://localhost:3333/lesson/basic/week4/23_javascript_func_scope",
-        "http://localhost:3333/lesson/basic/week4/24_dom_element",
-        "http://localhost:3333/lesson/basic/week4/24_javascript_json",
-        "http://localhost:3333/lesson/basic/week4/25_dom_html_value",
-        "http://localhost:3333/lesson/basic/week4/25_javascript_array_methods",
-        "http://localhost:3333/lesson/basic/week4/26_dom_style",
-        "http://localhost:3333/lesson/basic/week4/26_javascript_date",
-        "http://localhost:3333/lesson/basic/week4/27_dom_child",
-        "http://localhost:3333/lesson/basic/week4/27_dom_events",
-        "http://localhost:3333/lesson/basic/week4/28_dom_handle_children",
-        "http://localhost:3333/lesson/basic/week4/28_class_basic",
-        "http://localhost:3333/lesson/basic/week4/28_class_extend",
-        "http://localhost:3333/lesson/basic/week4/28_clean_code",
-        "http://localhost:3333/lesson/basic/week4/28_dom_drag_drop",
-        "http://localhost:3333/lesson/basic/week4/29_dom_multimedia",
-        "http://localhost:3333/lesson/basic/week4/29_dom_video_player",
-        "http://localhost:3333/lesson/basic/week4/30_dom_animated_header"
-        ]
-    },
-    {
-        display_name: "SQL Reloaded",
-        urls: ["http://localhost:3333/lesson/basic/week6/01_sql_install",
-        "http://localhost:3333/lesson/basic/week6/02_sql_intro",
-        "http://localhost:3333/lesson/basic/week6/03_sql_select",
-        "http://localhost:3333/lesson/basic/week6/04_sql_where",
-        "http://localhost:3333/lesson/basic/week6/05_sql_and_or_not",
-        "http://localhost:3333/lesson/basic/week6/06_sql_order_by",
-        "http://localhost:3333/lesson/basic/week6/07_sql_insert",
-        "http://localhost:3333/lesson/basic/week6/08_sql_update",
-        "http://localhost:3333/lesson/basic/week6/09_sql_delete",
-        "http://localhost:3333/lesson/basic/week6/10_sql_min_max",
-        "http://localhost:3333/lesson/basic/week6/11_sql_count_avg_sum",
-        "http://localhost:3333/lesson/basic/week6/12_sql_group_by",
-        "http://localhost:3333/lesson/basic/week6/13_sql_like",
-        "http://localhost:3333/lesson/basic/week6/14_sql_joins",
-        "http://localhost:3333/lesson/basic/week6/15_sql_keys",
-        "http://localhost:3333/lesson/basic/week6/16_sql_auto_increment",
-        "http://localhost:3333/lesson/basic/week6/17_sql_union"
-        ]
-    }
-];
-
-let courseDirectory = path.join(__dirname, 'olx/tr3600012');
-const course = new OlxGenerator(courseData, courseDirectory, args);

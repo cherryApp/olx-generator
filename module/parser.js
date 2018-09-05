@@ -7,31 +7,12 @@ var parser = new ArgumentParser({
     description: 'Usage'
   });
 parser.addArgument(
-    [ '-u', '--url' ],
+    [ '-j', '--json' ],
     {
-      help: 'the url that will convert to olx',
+      help: 'the path of json file, it contains the settings',
       required: true
     }
   );
-parser.addArgument(
-    [ '-head', '--header' ],
-    {
-      help: 'http header, for example: cookie',
-      required: false
-    }
-  );
-
-const parseHeaders = headers => {
-    let head = {};
-    headers = headers.split('|');
-    if (headers.length === 2) {
-        head[headers[0]] = headers[1];
-    }
-    return head;
-};
 
 let args = parser.parseArgs();
-if (args.header) {
-    args.header = parseHeaders(args.header);
-}
 module.exports = args;

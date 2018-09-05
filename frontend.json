@@ -1,0 +1,168 @@
+{
+    "name": "frontend",
+    "createTar": false,
+    "header": "cookie|YellowSSO=B9pUg7YBQFdvKY5nKutfgiWgh0VWf0qkDa68Dp0XTrNqGjhm3DgD8tT9vGRnaRTbAi/WqqJ3nH10saiGz4GoyYTmGGHKMF0HARQ7FVLX3cip4h8A49djwTUqGim04UJncw2R87cmm0jOnTSnbaYkxnbPJ4L1c+MT4iwqIIrt/q1kqsejGp24x0ONCgIawEfEw+0HHLE9HDU2TqeE+NndFld8KIUp5uwrcCxUdmLO/Uvpfv5UvxE7VY9CGjTgRxQjYWNVe7w1AaGKD3GtokSNEQ==;",
+    "html": {
+        "root": "body > .container",
+        "remove": ".row .pager"
+    },
+    "video": {
+        "separate": false,
+        "selector": "video"
+    },
+    "course": {
+        "url_name": "training360-frontend-course",
+        "org": "Training360",
+        "course": "training360-frontend-course",
+        "cert_html_view_enabled": "true",
+        "display_name": "Frontend programozás",
+        "language": "hu",
+        "start": "2018-09-01T00:00",
+        "_chapters": [
+            {
+                "display_name": " ES6+",
+                "urls": [
+                    "http://localhost:3333/lesson/frontend/week0/01_es6",
+                    "http://localhost:3333/lesson/frontend/week0/02_es6",
+                    "http://localhost:3333/lesson/frontend/week0/03_es6",
+                    "http://localhost:3333/lesson/frontend/week0/04_es6",
+                    "http://localhost:3333/lesson/frontend/week0/05_es6",
+                    "http://localhost:3333/lesson/frontend/week0/06_es6",
+                    "http://localhost:3333/lesson/frontend/week0/07_es6",
+                    "http://localhost:3333/lesson/frontend/week0/08_es6",
+                    "http://localhost:3333/lesson/frontend/week0/09_es6",
+                    "http://localhost:3333/lesson/frontend/week0/10_es6",
+                    "http://localhost:3333/lesson/frontend/week0/11_es6"
+                ]
+            },
+            {
+                "display_name": " Bootstrap | jQuery",
+                "urls": [
+                    "http://localhost:3333/lesson/frontend/week1/01_bootstrap_basic",
+                    "http://localhost:3333/lesson/frontend/week1/02_bootstrap_grid",
+                    "http://localhost:3333/lesson/frontend/week1/03_bootstrap_table",
+                    "http://localhost:3333/lesson/frontend/week1/04_bootstrap_button",
+                    "http://localhost:3333/lesson/frontend/week1/05_bootstrap_form_input",
+                    "http://localhost:3333/lesson/frontend/week1/06_bootstrap_form_elements",
+                    "http://localhost:3333/lesson/frontend/week1/07_bootstrap_components",
+                    "http://localhost:3333/lesson/frontend/week1/08_jquery_basic",
+                    "http://localhost:3333/lesson/frontend/week1/09_jquery_events",
+                    "http://localhost:3333/lesson/frontend/week1/10_jquery_effects",
+                    "http://localhost:3333/lesson/frontend/week1/11_jquery_animate",
+                    "http://localhost:3333/lesson/frontend/week1/12_jquery_get_set",
+                    "http://localhost:3333/lesson/frontend/week1/13_jquery_add_remove",
+                    "http://localhost:3333/lesson/frontend/week1/14_jquery_css",
+                    "http://localhost:3333/lesson/frontend/week1/15_jquery_traversing",
+                    "http://localhost:3333/lesson/frontend/week1/16_jquery_filtering",
+                    "http://localhost:3333/lesson/frontend/week1/17_jquery_ajax",
+                    "http://localhost:3333/lesson/frontend/week1/18_bootstrap_js_modal",
+                    "http://localhost:3333/lesson/frontend/week1/19_bootstrap_js_tabs",
+                    "http://localhost:3333/lesson/frontend/week1/20_bootstrap_js_popover"
+                ]
+            },
+            {
+                "display_name": "AngularJS",
+                "urls": [
+                    "http://localhost:3333/lesson/frontend/week2/01_angularjs_basic",
+                    "http://localhost:3333/lesson/frontend/week2/02_angularjs_module",
+                    "http://localhost:3333/lesson/frontend/week2/03_angularjs_controller",
+                    "http://localhost:3333/lesson/frontend/week2/04_angularjs_data_binding",
+                    "http://localhost:3333/lesson/frontend/week2/05_angularjs_http",
+                    "http://localhost:3333/lesson/frontend/week2/06_angularjs_http_2",
+                    "http://localhost:3333/lesson/frontend/week2/07_angularjs_form",
+                    "http://localhost:3333/lesson/frontend/week2/08_angularjs_validation",
+                    "http://localhost:3333/lesson/frontend/week2/09_angularjs_directive",
+                    "http://localhost:3333/lesson/frontend/week2/10_angularjs_directive_2",
+                    "http://localhost:3333/lesson/frontend/week2/11_angular_factory",
+                    "http://localhost:3333/lesson/frontend/week2/12_angular_factory_and_q",
+                    "http://localhost:3333/lesson/frontend/week2/13_angular_include",
+                    "http://localhost:3333/lesson/frontend/week2/14_angular_template",
+                    "http://localhost:3333/lesson/frontend/week2/15_angular_template_2",
+                    "http://localhost:3333/lesson/frontend/week2/16_angular_filter",
+                    "http://localhost:3333/lesson/frontend/week2/17_angular_service",
+                    "http://localhost:3333/lesson/frontend/week2/18_angular_router",
+                    "http://localhost:3333/lesson/frontend/week2/19_angular_router_2",
+                    "http://localhost:3333/lesson/frontend/week2/20_angular_crud_table"
+                ]
+            },
+            {
+                "display_name": "Angular2+ fejlesztés",
+                "urls": [
+                    "http://localhost:3333/lesson/frontend/week5/01_angular_review",
+                    "http://localhost:3333/lesson/frontend/week5/02_typescript_foundations",
+                    "http://localhost:3333/lesson/frontend/week5/03_typescript_sepcial_types",
+                    "http://localhost:3333/lesson/frontend/week5/04_typescript_oop",
+                    "http://localhost:3333/lesson/frontend/week5/05_typescript_oop_types",
+                    "http://localhost:3333/lesson/frontend/week5/06_typescript_classes",
+                    "http://localhost:3333/lesson/frontend/week5/07_angular_overview",
+                    "http://localhost:3333/lesson/frontend/week5/08_angular_architecture",
+                    "http://localhost:3333/lesson/frontend/week5/09_angular_data_binding_and_di",
+                    "http://localhost:3333/lesson/frontend/week5/10_angular_binding_and_io",
+                    "http://localhost:3333/lesson/frontend/week5/11_angular_component_interaction",
+                    "http://localhost:3333/lesson/frontend/week5/12_angular_pipe",
+                    "http://localhost:3333/lesson/frontend/week5/13_angular_directive_built_in",
+                    "http://localhost:3333/lesson/frontend/week5/14_angular_directive_custom",
+                    "http://localhost:3333/lesson/frontend/week5/15_angular_observable",
+                    "http://localhost:3333/lesson/frontend/week5/16_angular_httpclient",
+                    "http://localhost:3333/lesson/frontend/week5/17_angular_crud",
+                    "http://localhost:3333/lesson/frontend/week5/18_angular_async",
+                    "http://localhost:3333/lesson/frontend/week5/19_angular_routing",
+                    "http://localhost:3333/lesson/frontend/week5/20_angular_form_and_ref_variable",
+                    "http://localhost:3333/lesson/frontend/week5/21_angular_template_driven_forms",
+                    "http://localhost:3333/lesson/frontend/week5/22_angular_reactive_forms",
+                    "http://localhost:3333/lesson/frontend/week5/23_angular_dynamic_forms",
+                    "http://localhost:3333/lesson/frontend/week5/24_angular_dynamic_forms_finishing"
+                ]
+            },
+            {
+                "display_name": "NodeJS",
+                "urls": [
+                    "http://localhost:3333/lesson/frontend/week3/01_hello_nodejs",
+                    "http://localhost:3333/lesson/frontend/week3/02_es2015_function",
+                    "http://localhost:3333/lesson/frontend/week3/03_es2015_scope_variables",
+                    "http://localhost:3333/lesson/frontend/week3/04_es2015_class",
+                    "http://localhost:3333/lesson/frontend/week3/05_es2015_object",
+                    "http://localhost:3333/lesson/frontend/week3/06_es2015_template",
+                    "http://localhost:3333/lesson/frontend/week3/07_es2015_promise",
+                    "http://localhost:3333/lesson/frontend/week3/08_nodejs_http_module",
+                    "http://localhost:3333/lesson/frontend/week3/09_nodejs_fs_module",
+                    "http://localhost:3333/lesson/frontend/week3/10_nodejs_fs_2",
+                    "http://localhost:3333/lesson/frontend/week3/11_nodejs_path_module",
+                    "http://localhost:3333/lesson/frontend/week3/12_nodejs_custom_module",
+                    "http://localhost:3333/lesson/frontend/week3/13_nodejs_custom_module_2",
+                    "http://localhost:3333/lesson/frontend/week3/14_nodejs_events",
+                    "http://localhost:3333/lesson/frontend/week3/15_nodejs_promises",
+                    "http://localhost:3333/lesson/frontend/week3/16_npm_basics",
+                    "http://localhost:3333/lesson/frontend/week3/17_npm_package_json",
+                    "http://localhost:3333/lesson/frontend/week3/18_nodejs_filedb",
+                    "http://localhost:3333/lesson/frontend/week3/19_nodejs_filedb_2"
+                ]
+            },
+            {
+                "display_name": "Express | Pug",
+                "urls": [
+                    "http://localhost:3333/lesson/frontend/week4/01_express_basics",
+                    "http://localhost:3333/lesson/frontend/week4/02_express_static",
+                    "http://localhost:3333/lesson/frontend/week4/03_express_routing",
+                    "http://localhost:3333/lesson/frontend/week4/04_express_routing_2",
+                    "http://localhost:3333/lesson/frontend/week4/05_express_middleware",
+                    "http://localhost:3333/lesson/frontend/week4/06_express_middleware_2",
+                    "http://localhost:3333/lesson/frontend/week4/07_express_body_parser",
+                    "http://localhost:3333/lesson/frontend/week4/08_express_cookies",
+                    "http://localhost:3333/lesson/frontend/week4/09_express_session",
+                    "http://localhost:3333/lesson/frontend/week4/10_express_file_upload",
+                    "http://localhost:3333/lesson/frontend/week4/11_express_templates",
+                    "http://localhost:3333/lesson/frontend/week4/12_pug_template_engine",
+                    "http://localhost:3333/lesson/frontend/week4/13_pug_attributes",
+                    "http://localhost:3333/lesson/frontend/week4/14_pug_conditionals",
+                    "http://localhost:3333/lesson/frontend/week4/15_pug_extend_include",
+                    "http://localhost:3333/lesson/frontend/week4/16_pug_each",
+                    "http://localhost:3333/lesson/frontend/week4/17_pug_mixins",
+                    "http://localhost:3333/lesson/frontend/week4/18_express_admin_page",
+                    "http://localhost:3333/lesson/frontend/week4/19_express_admin_page_2",
+                    "http://localhost:3333/lesson/frontend/week4/20_express_admin_full"
+                ]
+            }
+        ]
+    }
+}

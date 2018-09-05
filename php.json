@@ -1,0 +1,108 @@
+{
+    "name": "php",
+    "createTar": false,
+    "header": "cookie|YellowSSO=B9pUg7YBQFdvKY5nKutfgiWgh0VWf0qkDa68Dp0XTrNqGjhm3DgD8tT9vGRnaRTbAi/WqqJ3nH10saiGz4GoyYTmGGHKMF0HARQ7FVLX3cip4h8A49djwTUqGim04UJncw2R87cmm0jOnTSnbaYkxnbPJ4L1c+MT4iwqIIrt/q1kqsejGp24x0ONCgIawEfEw+0HHLE9HDU2TqeE+NndFld8KIUp5uwrcCxUdmLO/Uvpfv5UvxE7VY9CGjTgRxQjYWNVe7w1AaGKD3GtokSNEQ==;",
+    "html": {
+        "root": "body > .container",
+        "remove": ".row .pager"
+    },
+    "video": {
+        "separate": false,
+        "selector": "video"
+    },
+    "course": {
+        "url_name": "training360-php-course",
+        "org": "Training360",
+        "course": "training360-php-course",
+        "cert_html_view_enabled": "true",
+        "display_name": "PHP programozás",
+        "language": "hu",
+        "start": "2018-09-01T00:00",
+        "_chapters": [
+            {
+                "display_name": "Alap hogy PHP",
+                "urls": [
+                    "http://localhost:3333/lesson/php/week1/01_php_install",
+                    "http://localhost:3333/lesson/php/week1/02_variable_basics",
+                    "http://localhost:3333/lesson/php/week1/03_php_arrays",
+                    "http://localhost:3333/lesson/php/week1/04_php_functions",
+                    "http://localhost:3333/lesson/php/week1/05_php_function_and_scope",
+                    "http://localhost:3333/lesson/php/week1/06_php_conditionals",
+                    "http://localhost:3333/lesson/php/week1/07_php_loops",
+                    "http://localhost:3333/lesson/php/week1/08_php_include_require",
+                    "http://localhost:3333/lesson/php/week1/09_string_functions",
+                    "http://localhost:3333/lesson/php/week1/10_php_objects",
+                    "http://localhost:3333/lesson/php/week1/11_php_get",
+                    "http://localhost:3333/lesson/php/week1/12_php_post",
+                    "http://localhost:3333/lesson/php/week1/13_php_session",
+                    "http://localhost:3333/lesson/php/week1/14_php_cookie",
+                    "http://localhost:3333/lesson/php/week1/15_php_file_handling",
+                    "http://localhost:3333/lesson/php/week1/16_php_file_upload"
+                ]
+            },
+            {
+                "display_name": "PHP mélyebben",
+                "urls": [
+                    "http://localhost:3333/lesson/php/week2/01_php_classes",
+                    "http://localhost:3333/lesson/php/week2/02_php_classes_2",
+                    "http://localhost:3333/lesson/php/week2/03_php_class_keywords",
+                    "http://localhost:3333/lesson/php/week2/04_php_inheritance",
+                    "http://localhost:3333/lesson/php/week2/05_php_exceptions",
+                    "http://localhost:3333/lesson/php/week2/06_php_mysql_admin",
+                    "http://localhost:3333/lesson/php/week2/07_mysql_select_update_delete",
+                    "http://localhost:3333/lesson/php/week2/08_mysql_insert",
+                    "http://localhost:3333/lesson/php/week2/09_php_mysql_class",
+                    "http://localhost:3333/lesson/php/week2/10_php_mysql_class_2",
+                    "http://localhost:3333/lesson/php/week2/11_interfaces",
+                    "http://localhost:3333/lesson/php/week2/12_interfaces_2",
+                    "http://localhost:3333/lesson/php/week2/13_abstract_class.md",
+                    "http://localhost:3333/lesson/php/week2/14_namespaces.md",
+                    "http://localhost:3333/lesson/php/week2/15_namespaces_2.md",
+                    "http://localhost:3333/lesson/php/week2/16_autoloader.md"
+                ]
+            },
+            {
+                "display_name": "Adatbázis kezelés OOP-val",
+                "urls": [
+                    "http://localhost:3333/lesson/php/week3/01_php_pdo",
+                    "http://localhost:3333/lesson/php/week3/02_php_pdo_2",
+                    "http://localhost:3333/lesson/php/week3/03_php_pdo_param_types",
+                    "http://localhost:3333/lesson/php/week3/04_php_pdo_fetch_1",
+                    "http://localhost:3333/lesson/php/week3/05_php_pdo_fetch_object",
+                    "http://localhost:3333/lesson/php/week3/06_php_pdo_fetch_all",
+                    "http://localhost:3333/lesson/php/week3/07_php_pdo_fetch_all_2",
+                    "http://localhost:3333/lesson/php/week3/08_php_exceptions",
+                    "http://localhost:3333/lesson/php/week3/09_pdo_transactions",
+                    "http://localhost:3333/lesson/php/week3/10_pdo_transactions_2",
+                    "http://localhost:3333/lesson/php/week3/11_pdo_transactions_3",
+                    "http://localhost:3333/lesson/php/week3/12_php_curl_intro",
+                    "http://localhost:3333/lesson/php/week3/13_php_curl_options_1",
+                    "http://localhost:3333/lesson/php/week3/14_php_curl_options_2",
+                    "http://localhost:3333/lesson/php/week3/15_php_curl_post",
+                    "http://localhost:3333/lesson/php/week3/16_php_curl_getinfo"
+                ]
+            },
+            {
+                "display_name": "Csomagok kezelése",
+                "urls": [
+                    "http://localhost:3333/lesson/php/week4/1_php_curl_getinfo",
+                    "http://localhost:3333/lesson/php/week4/2_composer_json",
+                    "http://localhost:3333/lesson/php/week4/3_composer_json",
+                    "http://localhost:3333/lesson/php/week4/4_composer_constraint",
+                    "http://localhost:3333/lesson/php/week4/5_composer_commands",
+                    "http://localhost:3333/lesson/php/week4/6_composer_commands_2",
+                    "http://localhost:3333/lesson/php/week4/7_composer_autoload",
+                    "http://localhost:3333/lesson/php/week4/8_composer_vcs",
+                    "http://localhost:3333/lesson/php/week4/9_composer_router",
+                    "http://localhost:3333/lesson/php/week4/10_composer_template",
+                    "http://localhost:3333/lesson/php/week4/11_composer_create_project",
+                    "http://localhost:3333/lesson/php/week4/12_symfony_basics",
+                    "http://localhost:3333/lesson/php/week4/13_php_debugging",
+                    "http://localhost:3333/lesson/php/week4/14_symfony_mvc",
+                    "http://localhost:3333/lesson/php/week4/15_symfony_twig",
+                    "http://localhost:3333/lesson/php/week4/16_symfony_orm_basics"
+                ]
+            }
+        ]
+    }
+}

@@ -31,4 +31,14 @@ module.exports = class Util {
             });
         });
     }
+
+    // Parse http headers.
+    static parseHeaders(headers) {
+        let head = {};
+        headers = headers.split('|');
+        if (headers.length === 2) {
+            head[headers[0]] = headers[1];
+        }
+        return head;
+    }
 };
